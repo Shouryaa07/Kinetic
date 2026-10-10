@@ -1,0 +1,20 @@
+# One-click deploy on Render (https://render.com): New > Blueprint > pick this repository.
+services:
+  - type: web
+    name: kinetic
+    runtime: docker
+    plan: starter            # a disk needs a paid plan; the free plan resets data on restart
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: KINETIC_COOKIE_SECURE
+        value: "true"
+      - key: KINETIC_DEMO_ENABLED
+        value: "true"
+      - key: KINETIC_GOOGLE_CLIENT_ID
+        sync: false          # paste your Google client ID in the Render dashboard
+    disk:
+      name: kinetic-data
+      mountPath: /data
+      sizeGB: 1

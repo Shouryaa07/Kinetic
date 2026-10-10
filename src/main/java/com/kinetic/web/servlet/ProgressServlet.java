@@ -1,0 +1,17 @@
+package com.kinetic.web.servlet;
+
+import com.kinetic.model.User;
+import com.kinetic.web.view.ProgressView;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/** Long-term progress: calendar, trends and records. */
+@WebServlet(name = "ProgressServlet", urlPatterns = "/progress")
+public class ProgressServlet extends BaseServlet {
+    @Override
+    protected void get(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        User user = currentUser(req);
+        html(resp, ProgressView.render(page(req), app().stats.dashboard(user.getId())));
+    }
+}
