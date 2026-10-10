@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5ef">
+  <meta name="description" content="Kinetic makes it easy to log movement, build consistency, and see your progress over time.">
+  <title>Kinetic — Movement, made meaningful</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#overview" aria-label="Kinetic home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M18.3 3 7.2 17.1h7.2L13.8 29l11-15.1h-7.1L18.3 3Z" fill="currentColor"/></svg></span>
+        <span class="brand-name">kinetic<span class="brand-period">.</span></span>
+      </a>
+      <div class="side-caption">YOUR SPACE</div>
+      <nav class="nav-list" aria-label="Sections">
+        <button class="nav-item active" type="button" data-view="overview"><span class="nav-icon" aria-hidden="true">◫</span><span>Overview</span><span class="nav-current" aria-hidden="true"></span></button>
+        <button class="nav-item" type="button" data-view="activity"><span class="nav-icon" aria-hidden="true">↗</span><span>Activity</span></button>
+        <button class="nav-item" type="button" data-view="goals"><span class="nav-icon" aria-hidden="true">◎</span><span>Goals</span></button>
+        <button class="nav-item" type="button" data-view="insights"><span class="nav-icon" aria-hidden="true">⌁</span><span>Insights</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="local-card"><span class="local-dot"></span><div><strong>Just for you</strong><p>Your data stays in this browser.</p></div></div>
+        <button type="button" class="side-reset" id="reset-demo">↻ <span>Reset demo data</span></button>
+        <div class="profile-mini"><span class="avatar">A</span><span class="profile-copy"><strong>Alex Morgan</strong><small>Demo athlete</small></span><span class="profile-menu" aria-hidden="true">···</span></div>
+      </div>
+    </aside>
+    <main id="main" class="main-area">
+      <header class="topbar"><div class="breadcrumb"><span>MY TRAINING</span><span class="crumb-slash">/</span><span id="crumb-current">OVERVIEW</span></div><div class="top-actions"><span class="today-label" id="today-label"></span><button type="button" class="icon-button theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" title="Change theme"><span aria-hidden="true">☼</span></button><button type="button" class="button button-primary top-add" id="open-workout"><span class="button-plus" aria-hidden="true">＋</span><span>Log a workout</span></button></div></header>
+      <div id="view-root" aria-live="polite"></div>
+      <footer class="page-footer"><span><span class="footer-mark">K</span> KINETIC</span><span>Small steps. Stronger days.</span><span class="footer-local"><i></i> SAVED ON THIS DEVICE</span></footer>
+    </main>
+  </div>
+  <dialog class="workout-dialog" id="workout-dialog" aria-labelledby="dialog-title"><form id="workout-form" method="dialog"><div class="dialog-head"><div><span class="eyebrow">MAKE IT COUNT</span><h2 id="dialog-title">Log a workout</h2></div><button class="icon-button dialog-close" type="button" id="close-dialog" aria-label="Close">×</button></div><label class="form-label" for="workout-type">What did you do?</label><div class="type-picker" id="type-picker"><label class="type-option"><input type="radio" name="type" value="Run" checked><span class="type-symbol run">R</span><span>Run</span></label><label class="type-option"><input type="radio" name="type" value="Walk"><span class="type-symbol walk">W</span><span>Walk</span></label><label class="type-option"><input type="radio" name="type" value="Cycle"><span class="type-symbol cycle">C</span><span>Cycle</span></label><label class="type-option"><input type="radio" name="type" value="Strength"><span class="type-symbol strength">S</span><span>Strength</span></label><label class="type-option"><input type="radio" name="type" value="Yoga"><span class="type-symbol yoga">Y</span><span>Yoga</span></label><label class="type-option"><input type="radio" name="type" value="HIIT"><span class="type-symbol hiit">H</span><span>HIIT</span></label></div><div class="form-grid"><label class="form-label" for="workout-date">Date<input id="workout-date" name="date" type="date" required></label><label class="form-label" for="workout-minutes">Duration <span class="input-suffix"><input id="workout-minutes" name="minutes" type="number" min="1" max="1440" value="35" required><span>min</span></span></label></div><label class="form-label distance-label" for="workout-distance">Distance <span class="optional">OPTIONAL · KM</span><input id="workout-distance" name="distance" type="number" min="0" max="500" step="0.1" placeholder="e.g. 5.2"></label><label class="form-label" for="workout-note">A note for later <span class="optional">OPTIONAL</span><input id="workout-note" name="note" type="text" maxlength="90" placeholder="How did it feel?"></label><p class="form-error" id="form-error" role="alert" hidden></p><div class="dialog-actions"><button type="button" class="button button-light" id="cancel-dialog">Cancel</button><button type="submit" class="button button-primary">Save workout <span aria-hidden="true">↗</span></button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

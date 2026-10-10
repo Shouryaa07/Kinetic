@@ -232,6 +232,8 @@ docker run -p 8080:8080 -v kinetic-data:/data -e KINETIC_GOOGLE_CLIENT_ID=your-i
 
 **Render**: push to GitHub, then *New > Blueprint* and select the repository. Add `KINETIC_GOOGLE_CLIENT_ID` in the dashboard.
 
+**GitHub Pages demo**: the repository also publishes a static, browser-only tracker from `docs/`. It includes sample workouts, editable weekly goals, progress views and CSV export; changes are saved in the visitor's browser and are not shared with the Java app. GitHub Pages cannot run the Java Servlet backend, so use Render when you need accounts and server-backed data.
+
 **Plain Tomcat**: `mvn package`, copy `target/kinetic.war` to `webapps/ROOT.war`.
 
 Production checklist:
